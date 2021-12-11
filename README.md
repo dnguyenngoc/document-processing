@@ -7,7 +7,7 @@
 [![Posgresql](https://img.shields.io/badge/postgres-14.1-brown)](https://www.postgresql.org/)
 [![FastAPI](https://img.shields.io/badge/fastapi-0.63.0-lightgrey)](https://fastapi.tiangolo.com/)
 [![Tensorflow](https://img.shields.io/badge/tensorflow-3.7.0-yellowgreen)](https://analyticsindiamag.com/tensorflow-2-7-0-released-all-major-updates-features/)
-[![Pytorch](https://img.shields.io/badge/pytorch-1.10.0-blue)](https://pytorch.org/blog/pytorch-1.10-released/)
+[![Pytorch](https://img.shields.io/badge/pytorch-1.10-blue)](https://pytorch.org/blog/pytorch-1.10-released/)
 
 This is project how to build full workflow ocr processing for mutiple document type (static form, free-form, bank-form ...). In the first release we try to make full system with cloud service. And the second release will will try to build all system on cluster raspberry pi with k8s. New release is comming :fire: :fire: :fire: :fire:
 
