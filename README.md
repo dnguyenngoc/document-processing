@@ -34,13 +34,13 @@ This is project how to build full workflow ocr processing for mutiple document t
 
 ## Contents
 - [Screenshots & Gifs](#screenshots--gifs)
-- [Why Celery](#why-celery)
-- [Why Fast Api](#why-fast-api)
+- [Why Celery?](#why-celery)
+- [Why Fast Api?](#why-fast-api)
 - [Structure](#structure)
 - [For dev](#for-dev)
 - [Contact Us](#contact-us)
 
-## Why Celery
+## Why Celery?
 Task queues are used as a mechanism to distribute work across threads or machines.
 
 A task queue’s input is a unit of work called a task. Dedicated worker processes constantly monitor task queues for new work to perform.
@@ -49,7 +49,7 @@ Celery communicates via messages, usually using a broker to mediate between clie
 
 A Celery system can consist of multiple workers and brokers, giving way to high availability and horizontal scaling. Docs at  [celery-doc](https://docs.celeryproject.org/en/stable/getting-started/introduction.html)
 
-## Why Fast Api
+## Why Fast Api?
 FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints. docs at: [fast-api](https://github.com/tiangolo/fastapi)
 
 - **Fast**: Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic). One of the fastest Python frameworks available.
