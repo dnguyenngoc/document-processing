@@ -9,7 +9,7 @@
 [![Tensorflow](https://img.shields.io/badge/tensorflow-3.7-yellowgreen)](https://analyticsindiamag.com/tensorflow-2-7-0-released-all-major-updates-features/)
 [![Pytorch](https://img.shields.io/badge/pytorch-1.10-blue)](https://pytorch.org/blog/pytorch-1.10-released/)
 
-This is project how to build full workflow ocr processing for mutiple document type (static form, free-form, bank-form ...). In the first release we try to make full system with cloud service. And the second release will will try to build all system on cluster raspberry pi with k8s. New release is comming :fire: :fire: :fire: :fire:
+This is project how to build full workflow ocr processing for mutiple document type (static form, free-form, bank-form ...). In the first release we try to make full system with cloud service. And the second release we will try to build all system on cluster raspberry pi with k8s. New release is comming :fire: :fire: :fire: :fire:
 
 ## Screenshots & Gifs
 
