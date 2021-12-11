@@ -1,0 +1,6 @@
+# dp-api
+__pycache__
+*.ini
+*.log
+*.env
+*.DS_Store
