@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  dp-api:
+    build:
+      context: ../dp-api
+      dockerfile: ./Dockerfile
+    container_name: dp-api
+    restart: unless-stopped
+    command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8081 --reload"
+    depends_on:
+      - dp-redis
+      - db-rabbitmq
+    ports:
+      - 8081:8081
+    networks:
+      - dp-net
+  dp-redis:
+    image: redis:latest
+    container_name: 'dp-redis'
+    restart: unless-stopped
+    hostname: redis
+    command: redis-server --requirepass 1q2w3e4r
+    ports: 
+      - 6379:6379
+    networks: 
+      - dp-net
+  dp-rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'dp-rabbitmq'
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: "dp"
+      RABBITMQ_DEFAULT_PASS: "1q2w3e4r"
+      RABBITMQ_DEFAULT_VHOST: ""
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks: 
+      - dp-net
+
+networks:
+  dp-net:
