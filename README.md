@@ -130,5 +130,5 @@ Frontend at http://localhost
 
 ## Contact Us
 
-Email-1: duynnguyenngoc@hotmail.com - Duy Nguyen :heart: :heart: :heart: 
-Email-2: ngocnghia128@gmail.com - Nghia Nguyen - :fire: :fire: :fire: 
+- Email-1: duynnguyenngoc@hotmail.com - Duy Nguyen :heart: :heart: :heart: 
+- Email-2: ngocnghia128@gmail.com - Nghia Nguyen - :fire: :fire: :fire: 
