@@ -1,6 +1,6 @@
 # dp-api
 __pycache__
-*.ini
+environment.ini
 *.log
 *.env
 *.DS_Store

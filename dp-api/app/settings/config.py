@@ -1,6 +1,8 @@
 import configparser
 import datetime
 import pytz 
+import os
+print(os.getcwd())
 
 
 cfg = configparser.ConfigParser()
