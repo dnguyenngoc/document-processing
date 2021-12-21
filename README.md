@@ -72,38 +72,28 @@ We will try more Machine learing/Deep learning to processing Image(document-proc
 ├── api-service
 │   └── dp-api // golang gin/gorm
 ├── ml-service
-│   ├──docment-classify 
-│       └── dp-classify // python celery
 │   ├──pre-processing 
 │       └── dp-idcard-preprocesing // python celery
-│       └── dp-ancestry-preprocessing // python celery
 │   ├──field-processing 
 │       └── dp-idcard-field-detection // python celery
-│       └── dp-ancestry-field-detection // python celery
 │   ├──ocr-engine 
-│       └── dp-ocr // python celery
+│       └── dp-vietnamese-ocr // python celery
 ├── other-service
     └── dp-database // postgres
     └── dp-redis // redis
     └── dp-rabitmq // rabbitmq
 ```
-- **Link Component docs**:
+- **Link Component for more details**:
 
-    - **Web** -  https://github.com/apot-group/document-processing/blob/main/dp-client/README.md
+    - **Client** -  https://github.com/apot-group/document-processing/blob/main/dp-client/README.md
 
     - **Api** -  https://github.com/apot-group/document-processing/blob/main/dp-api/README.md
-
-    - **Document Classify** - https://github.com/apot-group/document-processing/blob/main/dp-classify/README.md
     
     - **Id Card Pre Processing** - https://github.com/apot-group/document-processing/blob/main/dp-idcard-preprocessing/README.md
     
-    - **ancestry Pre Processing** - https://github.com/apot-group/document-processing/blob/main/dp-ancestry-preprocessing/README.md
-    
     - **Id Card Field Processing** - https://github.com/apot-group/document-processing/blob/main/dp-idcard-field-detection/README.md
-    
-    - **Ancestry Field Processing** - https://github.com/apot-group/document-processing/blob/main/dp-ancestry-field-detection/README.md
         
-    - **Transformer Ocr** - https://github.com/apot-group/document-processing/blob/main/dp-ocr/README.md
+    - **Vietnamese Ocr** - https://github.com/apot-group/document-processing/blob/main/dp-vietnameese-ocr/README.md
 
 
 ## For Dev
@@ -126,7 +116,6 @@ Api docs at: http://localhost/api/docs#/ or http://localhost/api/redoc#/
 ### 5. Frontend
 
 Frontend at http://localhost
-
 
 ## Contact Us
 

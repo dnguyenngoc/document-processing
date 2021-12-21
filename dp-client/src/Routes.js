@@ -1,9 +1,7 @@
 import React from 'react'
 import { Route, Switch, Redirect } from "react-router-dom";
 import isAuth from "./admin/auth";
-import Home from './screens/Home';
-import FaceRecognitionDemo from './screens/FaceReconitionDemo';
-
+import { RConfig } from './RouterConfig';
 
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
@@ -16,15 +14,13 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
     />
   )
 }
-
 export const Routes = () => {
-    const auth = isAuth()
-    return (
-      <Switch>
-         {/* <Route path='/login' component={Login} /> */}
-         <Route path='/demo/face-recognition' component={FaceRecognitionDemo}/>
-         <PrivateRoute authed={auth} path='/' component={Home}/> 
-
-      </Switch>
-    );
-  };
+  const auth = isAuth()
+  return (
+    <Switch>
+        {/* <Route path='/login' component={Login} /> */}
+        <Route path={RConfig.FaceRecognitionDemo.path} component={RConfig.FaceRecognitionDemo.component}/>
+        <PrivateRoute authed={auth} path={RConfig.Home.path} component={RConfig.Home.component}/> 
+    </Switch>
+  );
+};

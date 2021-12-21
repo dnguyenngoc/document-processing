@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Input } from 'antd';
+// import { Input } from 'antd';
+import Header from '../components/header/Header';
 import TestImage from '../assests/images/test/test.jpg'
 import ClickIcon from '../assests/images/icon/click.png'
+
 
 
 
@@ -11,6 +13,8 @@ const FaceRecognitionDemo = () => {
     ])
 
     return(
+        <>
+        <Header />
         <div className='face-recognition-demo'>
             <h4 className='frd-title'>Semantic Face Retection Demo</h4>
             <div className='frd-image-select'>
@@ -38,6 +42,7 @@ const FaceRecognitionDemo = () => {
                 <p className='frd-r-title'>Release</p>
                 </div>
         </div>
+        </>
     )
 }
 

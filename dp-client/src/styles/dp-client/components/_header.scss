@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@700&display=swap");
+.header{
+  font-family: "Sen", sans-serif;
+  align-items: center;
+//   justify-content: center;
+  background: white;
+  display: flex;
+  width: 100%;
+  text-align: center;
+//   height: 70px;
+  background: #1c203b;
+  .h-avatar {
+    padding: 5px 20px;
+    font-size: 40px;
+    font-family: "Sen", sans-serif;
+    color: #ffffff;
+    display: flex;
+    // padding-top: 50px;
+    padding-bottom: -30px;
+    background: #0050b3;
+    .h-a-ng{
+        padding: 0px 5px;
+        font-size: 40px;
+        font-weight: 20px;
+    }
+    .h-a-circle {
+        height: 2vmin;
+        width: 2vmin;
+        background: #ff7875;
+        border-radius: 100%;
+        margin-top: 20px;
+        animation-name: bounce-7;
+        animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+        animation-duration: 2s;
+      }
+  }
+}
