@@ -7,7 +7,7 @@ on:
 env:
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }} # dockerhub pass
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }} # dockerhub user
-  GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }} # gke project_id
+  PROJECT_ID: ${{ secrets.PROJECT_ID }} # gke project_id
   GKE_CLUSTER: cluster-document-processing # Add your cluster name here.
   GKE_ZONE: asia-south1-a  # Add your cluster zone here.
   GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }} # gke sa key
@@ -17,7 +17,7 @@ env:
 
 jobs:
   setup-build-publish-deploy-dp-api:
-    name: Setup, Build, Publish, and Deploy
+    name: Setup, Build, Publish, and Deploy DP-API
     runs-on: ubuntu-latest
     environment: production
 
@@ -46,7 +46,7 @@ jobs:
       - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
         with:
           service_account_key: $GKE_SA_KEY
-          project_id: $GKE_PROJECT_ID
+          project_id: $PROJECT_ID
 
       # [Step-6] Configure Docker to use the gcloud command-line tool as a credential helper for authentication
       - run: |-
