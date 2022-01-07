@@ -21,14 +21,14 @@ jobs:
     environment: production
 
     steps:
-      # # [Step-1] check config git
-      # - name: Checkout
-      #   uses: actions/checkout@v2
+      # [Step-1] check config git
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # # [Step-2] login dockerhub container
-      # - name: Login to DockerHub Registry
-      #   run: |
-      #     echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+      # [Step-2] login dockerhub container
+      - name: Login to DockerHub Registry
+        run: |
+          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
         
       # # [Step-3] buid and tag image from Dockerfile
       # - name: Build docker image
@@ -66,8 +66,7 @@ jobs:
       # Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
-          ls -l
-          kubectl apply -f /o-k8s/dp-api.yaml
+          kubectl apply -f ./o-k8s/dp-api.yaml
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
     
