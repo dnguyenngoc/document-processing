@@ -60,6 +60,6 @@ jobs:
       # [Step-7] Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
-          kubectl apply -f ./o-k8s/dp-api.yaml
+          kubectl apply -f ./o-k8s/
           kubectl get services -o wide
     
