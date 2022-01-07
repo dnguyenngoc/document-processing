@@ -58,18 +58,18 @@ services:
   #   networks:
   #     - dp-net
 
-  # paragraph:
-  #   build: 
-  #     context: ./dp-paragraph
-  #     dockerfile: ./Dockerfile
-  #   container_name: dp-paragraph
-  #   restart: unless-stopped
-  #   command: sh -c "celery -A tasks worker --loglevel=info --concurrency=1 -E --logfile=logs/celery.log"
-  #   volumes:
-  #     - ./dp-paragraph/app/:/app/
-  #     - dp-storage:/app/storages
-  #   networks:
-  #     - dp-net
+  paragraph:
+    build: 
+      context: ./dp-paragraph
+      dockerfile: ./Dockerfile
+    container_name: dp-paragraph
+    restart: unless-stopped
+    command: sh -c "celery -A tasks worker --loglevel=info --concurrency=1 -E --logfile=logs/celery.log"
+    volumes:
+      - ./dp-paragraph/app/:/app/
+      - dp-storage:/app/storages
+    networks:
+      - dp-net
 
 networks:
   dp-net:

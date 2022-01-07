@@ -49,3 +49,7 @@
 [2022-01-06 18:31:24,267: WARNING/ForkPoolWorker-1] 
 
 [2022-01-06 18:31:24,297: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[4c83a9c0-50c7-4975-919d-e89a6db2cb93] succeeded in 8.105101508999724s: None
+[2022-01-07 05:05:21,475: INFO/MainProcess] Connected to amqp://dp:**@dp-rabbitmq:5672//
+[2022-01-07 05:05:21,481: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-07 05:05:22,502: INFO/MainProcess] mingle: all alone
+[2022-01-07 05:05:22,533: INFO/MainProcess] celery@be5376ed671e ready.
