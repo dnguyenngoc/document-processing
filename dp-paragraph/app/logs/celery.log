@@ -1,0 +1,51 @@
+[2022-01-06 17:45:16,822: INFO/MainProcess] Connected to amqp://guest:**@10.1.32.150:5672//
+[2022-01-06 17:45:17,673: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-06 17:45:20,176: INFO/MainProcess] mingle: sync with 6 nodes
+[2022-01-06 17:45:20,179: INFO/MainProcess] mingle: sync complete
+[2022-01-06 17:45:21,341: INFO/MainProcess] celery@72761e7e7b86 ready.
+[2022-01-06 17:45:21,345: INFO/MainProcess] Task 0747_paragraph.paragraph_process[85314c1e-aed5-4e3c-89c4-c28808bb43bd] received
+[2022-01-06 17:45:21,868: WARNING/ForkPoolWorker-1] From /app/worker/ml/model.py:60: The name tf.keras.backend.set_session is deprecated. Please use tf.compat.v1.keras.backend.set_session instead.
+
+[2022-01-06 18:26:17,359: INFO/MainProcess] Connected to amqp://guest:**@10.1.32.150:5672//
+[2022-01-06 18:26:17,427: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-06 18:27:10,265: INFO/MainProcess] Connected to amqp://guest:**@10.1.32.150:5672//
+[2022-01-06 18:27:10,310: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-06 18:27:11,492: INFO/MainProcess] mingle: sync with 6 nodes
+[2022-01-06 18:27:11,494: INFO/MainProcess] mingle: sync complete
+[2022-01-06 18:27:11,694: INFO/MainProcess] celery@72761e7e7b86 ready.
+[2022-01-06 18:27:11,701: INFO/MainProcess] Task 0747_paragraph.paragraph_process[85314c1e-aed5-4e3c-89c4-c28808bb43bd] received
+[2022-01-06 18:27:12,206: WARNING/ForkPoolWorker-1] From /app/worker/ml/model.py:60: The name tf.keras.backend.set_session is deprecated. Please use tf.compat.v1.keras.backend.set_session instead.
+
+[2022-01-06 18:27:24,055: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[85314c1e-aed5-4e3c-89c4-c28808bb43bd] succeeded in 12.250270015000297s: None
+[2022-01-06 18:27:37,396: INFO/MainProcess] Task 0747_paragraph.paragraph_process[41f599b3-5ed0-422c-b36c-b741b30f1dab] received
+[2022-01-06 18:27:47,088: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[41f599b3-5ed0-422c-b36c-b741b30f1dab] succeeded in 9.689626876000148s: None
+[2022-01-06 18:29:29,113: INFO/MainProcess] Connected to amqp://guest:**@10.1.32.150:5672//
+[2022-01-06 18:29:29,231: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-06 18:29:30,433: INFO/MainProcess] mingle: sync with 6 nodes
+[2022-01-06 18:29:30,437: INFO/MainProcess] mingle: sync complete
+[2022-01-06 18:29:30,818: INFO/MainProcess] celery@72761e7e7b86 ready.
+[2022-01-06 18:29:34,868: INFO/MainProcess] Task 0747_paragraph.paragraph_process[d62b85bf-00cb-4a11-abc1-fd29f06db8c6] received
+[2022-01-06 18:29:35,264: WARNING/ForkPoolWorker-1] From /app/worker/ml/model.py:60: The name tf.keras.backend.set_session is deprecated. Please use tf.compat.v1.keras.backend.set_session instead.
+
+[2022-01-06 18:29:46,198: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[d62b85bf-00cb-4a11-abc1-fd29f06db8c6] succeeded in 11.326278317999822s: None
+[2022-01-06 18:29:46,210: INFO/MainProcess] Task 0747_paragraph.paragraph_process[c14f1f6e-c648-4870-8dda-b9e5d1daa177] received
+[2022-01-06 18:29:54,180: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[c14f1f6e-c648-4870-8dda-b9e5d1daa177] succeeded in 7.967007511000247s: None
+[2022-01-06 18:29:54,194: INFO/MainProcess] Task 0747_paragraph.paragraph_process[e1a13a4a-7aa7-45cd-abdc-fa83225194b1] received
+[2022-01-06 18:30:02,576: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[e1a13a4a-7aa7-45cd-abdc-fa83225194b1] succeeded in 8.40148546499995s: None
+[2022-01-06 18:30:58,357: INFO/MainProcess] Connected to amqp://guest:**@10.1.32.150:5672//
+[2022-01-06 18:30:58,398: INFO/MainProcess] mingle: searching for neighbors
+[2022-01-06 18:30:59,572: INFO/MainProcess] mingle: sync with 6 nodes
+[2022-01-06 18:30:59,575: INFO/MainProcess] mingle: sync complete
+[2022-01-06 18:30:59,812: INFO/MainProcess] celery@72761e7e7b86 ready.
+[2022-01-06 18:31:05,344: INFO/MainProcess] Task 0747_paragraph.paragraph_process[77f372b7-99be-490d-8221-c15bd8093c86] received
+[2022-01-06 18:31:05,663: WARNING/ForkPoolWorker-1] From /app/worker/ml/model.py:60: The name tf.keras.backend.set_session is deprecated. Please use tf.compat.v1.keras.backend.set_session instead.
+
+[2022-01-06 18:31:16,063: WARNING/ForkPoolWorker-1] [{'box': (1585, 377, 2793, 1434), 'class_name': 'paragraph_0', 'confidence_level': 1.0}, {'box': (1585, 1434, 2944, 1887), 'class_name': 'paragraph_1', 'confidence_level': 1.0}, {'box': (226, 906, 1585, 1887), 'class_name': 'paragraph_2', 'confidence_level': 1.0}, {'box': (226, 75, 1510, 906), 'class_name': 'paragraph_3', 'confidence_level': 1.0}, {'box': (1510, 75, 2793, 377), 'class_name': 'paragraph_4', 'confidence_level': 1.0}]
+[2022-01-06 18:31:16,064: WARNING/ForkPoolWorker-1] 
+
+[2022-01-06 18:31:16,170: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[77f372b7-99be-490d-8221-c15bd8093c86] succeeded in 10.823232662999999s: None
+[2022-01-06 18:31:16,190: INFO/MainProcess] Task 0747_paragraph.paragraph_process[4c83a9c0-50c7-4975-919d-e89a6db2cb93] received
+[2022-01-06 18:31:24,266: WARNING/ForkPoolWorker-1] [{'box': (1585, 377, 2793, 1434), 'class_name': 'paragraph_0', 'confidence_level': 1.0}, {'box': (1585, 1434, 2944, 1887), 'class_name': 'paragraph_1', 'confidence_level': 1.0}, {'box': (226, 906, 1585, 1887), 'class_name': 'paragraph_2', 'confidence_level': 1.0}, {'box': (226, 75, 1510, 906), 'class_name': 'paragraph_3', 'confidence_level': 1.0}, {'box': (1510, 75, 2793, 377), 'class_name': 'paragraph_4', 'confidence_level': 1.0}]
+[2022-01-06 18:31:24,267: WARNING/ForkPoolWorker-1] 
+
+[2022-01-06 18:31:24,297: INFO/ForkPoolWorker-1] Task 0747_paragraph.paragraph_process[4c83a9c0-50c7-4975-919d-e89a6db2cb93] succeeded in 8.105101508999724s: None
