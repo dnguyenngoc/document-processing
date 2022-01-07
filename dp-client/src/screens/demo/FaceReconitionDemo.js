@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 // import { Input } from 'antd';
-import Header from '../components/header/Header';
-import TestImage from '../assests/images/test/test.jpg'
-import ClickIcon from '../assests/images/icon/click.png'
-
-
+import Header from '../../components/header/Header';
+import TestImage from '../../assests/images/test/test.jpg'
+import ClickIcon from '../../assests/images/icon/click.png'
 
 
 const FaceRecognitionDemo = () => {
     const [sampleImages, setSampleImages] = useState([
         TestImage, TestImage, TestImage, TestImage
     ])
+    // setSampleImages([
+    //     TestImage, TestImage, TestImage, TestImage
+    // ])
 
     return(
         <>
-        <Header />
+        {/* <Header /> */}
         <div className='face-recognition-demo'>
             <h4 className='frd-title'>Semantic Face Retection Demo</h4>
             <div className='frd-image-select'>

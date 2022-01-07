@@ -18,9 +18,18 @@ ENV PYTHONUNBUFFERED 1
 # install dependencies
 RUN pip install --upgrade pip
 
-# update apt
+
 RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
+
+# RUN apt-get install openssh-client -y
+
+# RUN pip3 install pipenv
+# COPY Pipfile* /app/
+
+# ONBUILD RUN set -ex && pipenv install --deploy --system
+
+# RUN pipenv lock --requirements > requirements.txt
 
 COPY ./requirements.txt /app/requirements.txt 
 RUN pip install -r requirements.txt
