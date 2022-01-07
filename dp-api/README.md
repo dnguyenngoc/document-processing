@@ -160,7 +160,3 @@ GET api/v1/ml/status/{task_id}
   "error": null
 }
 ```
-
-
-## Contact Us
-Email-1: duynguyenngoc@hotmail.com - Duy Nguyen :heart: :heart: :heart: 
