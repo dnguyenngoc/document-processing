@@ -2,7 +2,7 @@ name:  PRODUCTION_PIPELINE
 on:
   push:
     branches:
-    - main 
+    - production 
     # paths:
     # - "dp-api/**" 
 env:
