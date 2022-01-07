@@ -10,7 +10,7 @@ env:
   GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }} # gke project_id
   GKE_CLUSTER: cluster-document-processing # Add your cluster name here.
   GKE_ZONE: asia-south1-a  # Add your cluster zone here.
-  GKE_SA_KEY: $ {{ secrets.GKE_SA_KEY }} # gke sa key
+  GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }} # gke sa key
   DEPLOYMENT_NAME: gke-production # development name
   DP_API_IMAGE: duynguyenngoc/dp-api:latest # Image docker
 
@@ -23,24 +23,24 @@ jobs:
 
     steps:
 
-      # [Step-1] check config git
-      - name: Checkout
-        uses: actions/checkout@v2
+      # # [Step-1] check config git
+      # - name: Checkout
+      #   uses: actions/checkout@v2
 
-      # [Step-2] login dockerhub container
-      - name: Login to DockerHub Registry
-        run: |
-          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+      # # [Step-2] login dockerhub container
+      # - name: Login to DockerHub Registry
+      #   run: |
+      #     echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
         
-      # [Step-3] buid and tag image from Dockerfile
-      - name: Build docker image
-        run: |
-          docker build -t $DP_API_IMAGE ./dp-api/
+      # # [Step-3] buid and tag image from Dockerfile
+      # - name: Build docker image
+      #   run: |
+      #     docker build -t $DP_API_IMAGE ./dp-api/
       
-      # [Step-4] Push image to docker hub
-      - name: Push image to DockerHub
-        run: |
-          docker push $DP_API_IMAGE
+      # # [Step-4] Push image to docker hub
+      # - name: Push image to DockerHub
+      #   run: |
+      #     docker push $DP_API_IMAGE
 
       # [Step-5] Setup gcloud CLI
       - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
