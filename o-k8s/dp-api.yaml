@@ -1,16 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dp-api
+  name: dp-api-deployment
+  labels:
+    app: dp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dp-api
+      type: api-pod
+      app: dp
   template:
     metadata:
+      name: dp-api-pod
       labels:
-        app: dp-api
+        type: api-pod
+        app: dp
     spec:
       containers:
         - name: dp-api
@@ -18,14 +23,16 @@ spec:
           imagePullPolicy: IfNotPresent #JUST PULL IF IMAGE NOT PRESENT
           ports:
             - containerPort: 8081
+          command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081", "--reload"]
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: dp-api-service
+  name: api-service
   labels:
-    app: dp-api-service
+    type: dp-api-service
+    app: dp
 spec:
   type: LoadBalancer
   ports:
@@ -33,4 +40,7 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 8081
+  selector:
+    type: api-pod
+    app: dp
     

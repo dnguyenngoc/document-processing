@@ -30,15 +30,15 @@ jobs:
         run: |
           echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
         
-      # # [Step-3] buid and tag image from Dockerfile
-      # - name: Build docker image
-      #   run: |
-      #     docker build -t $DP_API_IMAGE ./dp-api/
+      # [Step-3] buid and tag image from Dockerfile
+      - name: Build docker image
+        run: |
+          docker build -t $DP_API_IMAGE ./dp-api/
       
-      # # [Step-4] Push image to docker hub
-      # - name: Push image to DockerHub
-      #   run: |
-      #     docker push $DP_API_IMAGE
+      # [Step-4] Push image to docker hub
+      - name: Push image to DockerHub
+        run: |
+          docker push $DP_API_IMAGE
 
       # [Step-5] Setup gcloud CLI
       - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
@@ -60,6 +60,7 @@ jobs:
       # [Step-7] Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
+          kubectl delete all --all --all-namespaces
           kubectl apply -f ./o-k8s/
           kubectl get services -o wide
     
