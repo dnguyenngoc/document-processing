@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dp-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dp-api
+  template:
+    metadata:
+      labels:
+        app: dp-api
+    spec:
+      containers:
+        - name: dp-api
+          image: "duynguyenngoc/dp-api:latest"
+          imagePullPolicy: IfNotPresent #JUST PULL IF IMAGE NOT PRESENT
+          ports:
+            - containerPort: 8081
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: dp-api-service
+#   labels:
+#     app: dp-api-service
+# spec:
+#   type: LoadBalancer
+#   ports:
+#     - name: http
+#       protocol: TCP
+#       port: 80
+#       targetPort: 8081
+    
