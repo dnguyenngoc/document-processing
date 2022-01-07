@@ -60,7 +60,6 @@ jobs:
       # [Step-7] Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
-          kubectl delete all --all --all-namespaces
           kubectl apply -f ./o-k8s/
           kubectl get services -o wide
     
