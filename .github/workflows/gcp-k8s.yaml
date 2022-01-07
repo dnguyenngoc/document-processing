@@ -3,8 +3,8 @@ on:
   push:
     branches:
     - main 
-    paths:
-    - "dp-api/**" 
+    # paths:
+    # - "dp-api/**" 
 env:
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -12,24 +12,24 @@ env:
 
 jobs:
     build-dp-api:
-    name: Building dp-api
-    runs-on: ubuntu-latest
-    steps:  
+      name: Building dp-api
+      runs-on: ubuntu-latest
+      steps:  
 
-    # [Step-1] check config git
-    - uses: actions/checkout@v2
+      # [Step-1] check config git
+      - uses: actions/checkout@v2
 
-    # [Step-2] login dockerhub container
-    - name: Login to DockerHub Registry
-      run: |
-        echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-    
-    # [Step-3] buid and tag image from Dockerfile
-    - name: Build and tag the image
-      run: |
-        docker build -t $DP_API_IMAGE ./dp-api/
-    
-    # [Step-4] Push image to docker hub
-    - name: Push image to DockerHub
-      run: |
-        docker push $DP_API_IMAGE
+      # [Step-2] login dockerhub container
+      - name: Login to DockerHub Registry
+        run: |
+          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+      
+      # [Step-3] buid and tag image from Dockerfile
+      - name: Build docker image
+        run: |
+          docker build -t $DP_API_IMAGE ./dp-api/
+      
+      # [Step-4] Push image to docker hub
+      - name: Push image to DockerHub
+        run: |
+          docker push $DP_API_IMAGE
