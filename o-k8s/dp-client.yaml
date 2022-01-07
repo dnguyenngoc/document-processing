@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+# ở đây phiên bản cũ hơn của kubernetes có dạng extensions/v1beta1
+kind: Deployment
+# kind là loại Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  # replica ở đây sẽ tạo ra 1 pods luôn luôn chạy, khi một số pods bị down hay chết hay bất kì lý do nào đó sẽ tự động tạo lại số lượng pods bằng 1
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - name: nginx-deployment
+      # image của container docker
+        image: nginx
+        ports:
+        # port bên trong container
+        - containerPort: 8080
+---
+apiVersion: v1
+# kind là loại Service
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+  type: LoadBalancer
+  ports:
+  # port bên ngoài của pods mà các pods có thể giao tiếp được với nhau
+  - port: 80
+  # port target với 8080 của deployment
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+  # dựa theo app : nginx-deployment ở labels trên kia sẽ map với service này
+    app: nginx-deployment

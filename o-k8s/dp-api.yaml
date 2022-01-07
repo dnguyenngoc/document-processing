@@ -1,46 +1,46 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: dp-api-deployment
-  labels:
-    app: dp
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      type: api-pod
-      app: dp
-  template:
-    metadata:
-      name: dp-api-pod
-      labels:
-        type: api-pod
-        app: dp
-    spec:
-      containers:
-        - name: dp-api
-          image: "duynguyenngoc/dp-api:latest"
-          imagePullPolicy: IfNotPresent #JUST PULL IF IMAGE NOT PRESENT
-          ports:
-            - containerPort: 8081
-          command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081", "--reload"]
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: dp-api-deployment
+#   labels:
+#     app: dp
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       type: api-pod
+#       app: dp
+#   template:
+#     metadata:
+#       name: dp-api-pod
+#       labels:
+#         type: api-pod
+#         app: dp
+#     spec:
+#       containers:
+#         - name: dp-api
+#           image: "duynguyenngoc/dp-api:latest"
+#           imagePullPolicy: IfNotPresent #JUST PULL IF IMAGE NOT PRESENT
+#           ports:
+#             - containerPort: 8081
+#           command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081", "--reload"]
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: api-service
-  labels:
-    type: dp-api-service
-    app: dp
-spec:
-  type: LoadBalancer
-  ports:
-    - name: http
-      protocol: TCP
-      port: 80
-      targetPort: 8081
-  selector:
-    type: api-pod
-    app: dp
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: api-service
+#   labels:
+#     type: dp-api-service
+#     app: dp
+# spec:
+#   type: LoadBalancer
+#   ports:
+#     - name: http
+#       protocol: TCP
+#       port: 80
+#       targetPort: 8081
+#   selector:
+#     type: api-pod
+#     app: dp
     
