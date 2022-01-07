@@ -1,19 +1,28 @@
+"""
+[summary] API for Paragraph, field detection of Ancestry Document project.
+[information]
+    @author: Duy Nguyen
+    @email: duynguyenngoc@hotmail.com
+    @create: 2022-1-1
+"""
 
-from fastapi import FastAPI
-from settings import config
-import uvicorn
 import logging
 from logging.handlers import TimedRotatingFileHandler
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from databases.db_connect import Session
 from starlette.requests import Request
-from api.routes import v1
-import time
-import json
+
+
+from settings import config
+from databases.connect import Session
+from api.r_v1 import router_v1
+from mq_main import redis
+
 
 
 # ++++++++++++++++++++++++++++++++++++++++++++ DEFINE APP +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 app = FastAPI(title=config.PROJECT_NAME, openapi_url="/api/openapi.json", docs_url="/api/docs", redoc_url="/api/redoc")
+
 
 # ++++++++++++++++++++++++++++++++++++++++++++ HANDLE LOG FILE +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
@@ -27,13 +36,18 @@ logger.addHandler(handler)
 
 
 # ++++++++++++++++++++++++++++++++++++++++++++ ROUTER CONFIG ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-app.include_router(v1.router, prefix="/api/v1")
+app.include_router(router_v1, prefix="/api/v1")
 
 
 # ++++++++++++++++++++++++++++++++++++++++++++ CORS MIDDLEWARE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+origins = [
+    "http://{host}:{port}".format(host=config.HOST, port=config.PORT),
+    "http://{host}".format(host=config.NGINX_HOST),
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=config.CORS_HOST,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -46,7 +60,3 @@ async def db_session_middleware(request: Request, call_next):
     response = await call_next(request)
     request.state.db.close()
     return response
-
-# ++++++++++++++++++++++++++++++++++++++++++++++ RUN SERVICE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-if __name__ == "__main__":
-    uvicorn.run(app, host='0.0.0.0',port=config.PORT,debug=True)

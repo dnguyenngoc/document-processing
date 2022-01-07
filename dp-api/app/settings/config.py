@@ -1,8 +1,6 @@
 import configparser
 import datetime
 import pytz 
-import os
-print(os.getcwd())
 
 
 cfg = configparser.ConfigParser()
@@ -10,7 +8,7 @@ cfg.read('./environment.ini')
 
 
 #=========================================================================
-#                           TIMING CONFIG VIETNAM
+#                           TIMING CONFIG
 #=========================================================================
 u = datetime.datetime.utcnow()
 u = u.replace(tzinfo=pytz.timezone("Asia/Ho_Chi_Minh"))
@@ -22,10 +20,15 @@ u = u.replace(tzinfo=pytz.timezone("Asia/Ho_Chi_Minh"))
 PROJECT = cfg['project']
 PROJECT_NAME = PROJECT['name']
 ENVIRONMENT = PROJECT['environment']
+HOST = PROJECT['host']
 PORT = PROJECT['port']
+USER = PROJECT['user']
+PASSWORD = PROJECT['password']
 
-CORS = cfg['cors']
-CORS_HOST = [path for _, path in CORS.items()]
+NGINX = cfg['nginx']
+NGINX_HOST = NGINX['host']
+
+
 
 #=========================================================================
 #                          AUTHENTICATE INFORMATION 
@@ -46,6 +49,7 @@ SECRET_KEY = AUTHENTICATE['secret_key']
 #                          DATABASE INFORMATION 
 #=========================================================================
 DATABASE = cfg['database']
+
 SQLALCHEMY_DATABASE_URL = "{type}://{user}:{pw}@{host}:{port}/{db_name}" \
     .format(
         type = DATABASE['type'],
@@ -56,3 +60,40 @@ SQLALCHEMY_DATABASE_URL = "{type}://{user}:{pw}@{host}:{port}/{db_name}" \
         db_name = DATABASE['database'],
     )
 DATABASE_SCHEMA = DATABASE['schema']
+
+#=========================================================================
+#                          REDIS INFORMATION 
+#=========================================================================
+REDIS = cfg['redis']
+REDIS_BACKEND = "redis://:{password}@{hostname}:{port}/{db}".format(
+    hostname=REDIS['host'],
+    password=REDIS['pass'],
+    port=REDIS['port'],
+    db=REDIS['db']
+)
+
+#=========================================================================
+#                          BROKER INFORMATION 
+#=========================================================================
+RABBITMQ = cfg['rabbitmq']
+BROKER = "amqp://{user}:{pw}@{hostname}:{port}/{vhost}".format(
+    user=RABBITMQ['user'],
+    pw=RABBITMQ['pass'],
+    hostname=RABBITMQ['host'],
+    port=RABBITMQ['post'],
+    vhost=RABBITMQ['vhost']
+)
+
+#=========================================================================
+#                          ML INFORMATION 
+#=========================================================================
+ML = cfg['ml']
+ML_IMAGE_TYPE = ML['image_type']
+ML_STORAGE_PATH = ML['storage_path']
+ML_STORAGE_UPLOAD_PATH = ML['storage_upload_path']
+ML_STORAGE_PARAGRAPH_PATH = ML['storage_paragraph_path']
+ML_STORAGE_FIELD_PATH = ML['storage_field_path']
+ML_PROCESS_TAKS_NAME = ML['process_task_name']
+ML_QUERY_NAME = ML['query_name']
+
+

@@ -20,6 +20,7 @@ export const Routes = () => {
     <Switch>
         {/* <Route path='/login' component={Login} /> */}
         <Route path={RConfig.FaceRecognitionDemo.path} component={RConfig.FaceRecognitionDemo.component}/>
+        <Route path={RConfig.IdentityCardDemo.path} component={RConfig.IdentityCardDemo.component}/>
         <PrivateRoute authed={auth} path={RConfig.Home.path} component={RConfig.Home.component}/> 
     </Switch>
   );

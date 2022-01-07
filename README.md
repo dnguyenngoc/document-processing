@@ -34,37 +34,21 @@ This is project how to build full workflow ocr processing for mutiple document t
 
 ## Contents
 - [Screenshots & Gifs](#screenshots--gifs)
-- [Why Celery?](#why-celery)
-- [Why Fast Api?](#why-fast-api)
-- [Structure](#structure)
-- [For dev](#for-dev)
+- [App API](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#api-documents)
+   - [Why FastAPI?](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#why-fastapi)
+   - [Why Celery?](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#why-celery)
+   - [API documents](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#api-documents-1)
+      - [1. Login Accept Token](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#1-login-accept-token)
+      - [2. Login Refresh Token](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#2-login-refresh-token)
+      - [3. ML Predict](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#3-ml-predict)
+      - [4. ML Status](https://github.com/apot-group/document-processing/blob/master/dp_api/README.md#4-ml-status)
+- [App Paragraph](https://github.com/apot-group/document-processing/blob/master/dp_paragraph/README.md#app-paragraph)
+- [App Field](https://github.com/apot-group/document-processing/blob/master/dp_field/README.md#app-field)
+- [App OCR](https://github.com/apot-group/document-processing/blob/master/dp_ocr/README.md#app-ocr)
+- [For developer](#for-dev)
 - [Contact Us](#contact-us)
 
-## Why Celery?
-Task queues are used as a mechanism to distribute work across threads or machines.
-
-A task queue’s input is a unit of work called a task. Dedicated worker processes constantly monitor task queues for new work to perform.
-
-Celery communicates via messages, usually using a broker to mediate between clients and workers. To initiate a task the client adds a message to the queue, the broker then delivers that message to a worker.
-
-A Celery system can consist of multiple workers and brokers, giving way to high availability and horizontal scaling. Docs at  [celery-doc](https://docs.celeryproject.org/en/stable/getting-started/introduction.html)
-
-## Why Fast Api?
-FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints. docs at: [fast-api](https://github.com/tiangolo/fastapi)
-
-- **Fast**: Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic). One of the fastest Python frameworks available.
-
-- **Fast to code**: Increase the speed to develop features by about 200% to 300%. *
-
-- **Fewer bugs**: Reduce about 40% of human (developer) induced errors. *
-Intuitive: Great editor support. Completion everywhere. Less time debugging.
-- **Easy**: Designed to be easy to use and learn. Less time reading docs.
-- **Short**: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
-- **Robust**: Get production-ready code. With automatic interactive documentation.
-- **Standards-based**: Based on (and fully compatible with) the open standards for APIs: OpenAPI (previously known as Swagger) and JSON Schema.
-
-
-## Structure
+<!-- ## Structure
 We will try more Machine learing/Deep learning to processing Image(document-processing) in future. Now will just focus on how to make full system work well on pi4 clustering with kuberneter. :fire: :fire: :fire:.
 ```
 ├── web-service
@@ -83,8 +67,8 @@ We will try more Machine learing/Deep learning to processing Image(document-proc
     └── dp-redis // redis
     └── dp-rabitmq // rabbitmq
 ```
-- **Link Component for more details**:
-
+- **Link Component for more details**: -->
+<!-- 
     - **Client** -  https://github.com/apot-group/document-processing/blob/main/dp-client/README.md
 
     - **Api** -  https://github.com/apot-group/document-processing/blob/main/dp-api/README.md
@@ -93,7 +77,7 @@ We will try more Machine learing/Deep learning to processing Image(document-proc
     
     - **Id Card Field Processing** - https://github.com/apot-group/document-processing/blob/main/dp-idcard-field-detection/README.md
         
-    - **Vietnamese Ocr** - https://github.com/apot-group/document-processing/blob/main/dp-vietnameese-ocr/README.md
+    - **Vietnamese Ocr** - https://github.com/apot-group/document-processing/blob/main/dp-vietnameese-ocr/README.md -->
 
 
 ## For Dev
