@@ -1,42 +1,42 @@
-# apiVersion: apps/v1
-# # ở đây phiên bản cũ hơn của kubernetes có dạng extensions/v1beta1
-# kind: Deployment
-# # kind là loại Deployment
-# metadata:
-#   name: nginx-deployment
-# spec:
-#   replicas: 1
-#   # replica ở đây sẽ tạo ra 1 pods luôn luôn chạy, khi một số pods bị down hay chết hay bất kì lý do nào đó sẽ tự động tạo lại số lượng pods bằng 1
-#   selector:
-#     matchLabels:
-#       app: nginx-deployment
-#   template:
-#     metadata:
-#       labels:
-#         app: nginx-deployment
-#     spec:
-#       containers:
-#       - name: nginx-deployment
-#       # image của container docker
-#         image: "duynguyenngoc/dp-client:latest"
-#         ports:
-#         # port bên trong container
-#         - containerPort: 80
-# ---
-# apiVersion: v1
-# # kind là loại Service
-# kind: Service
-# metadata:
-#   name: dp-client-service
-# spec:
-#   type: LoadBalancer
-#   ports:
-#   # port bên ngoài của pods mà các pods có thể giao tiếp được với nhau
-#   - port: 80
-#   # port target với 80 của deployment
-#     targetPort: 80
-#     protocol: TCP
-#     name: http
-#   selector:
-#   # dựa theo app : nginx-deployment ở labels trên kia sẽ map với service này
-#     app: nginx-deployment
+apiVersion: apps/v1
+# ở đây phiên bản cũ hơn của kubernetes có dạng extensions/v1beta1
+kind: Deployment
+# kind là loại Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  # replica ở đây sẽ tạo ra 1 pods luôn luôn chạy, khi một số pods bị down hay chết hay bất kì lý do nào đó sẽ tự động tạo lại số lượng pods bằng 1
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - name: nginx-deployment
+        image: duynguyenngoc/dp-client:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80 # port bên trong container
+      
+---
+apiVersion: v1
+# kind là loại Service
+kind: Service
+metadata:
+  name: dp-client-service
+spec:
+  type: LoadBalancer
+  ports:
+  # port bên ngoài của pods mà các pods có thể giao tiếp được với nhau
+  - port: 80
+  # port target với 80 của deployment
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+  # dựa theo app : nginx-deployment ở labels trên kia sẽ map với service này
+    app: nginx-deployment

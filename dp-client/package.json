@@ -21,7 +21,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "start:development": "env-cmd -f ./.env.development.local npm start"
+    "start:development": "env-cmd -f ./.env.development.local yarn start",
+    "build:production": "env-cmd -f ./.env.production.local yarn build"
+
   },
   "eslintConfig": {
     "extends": [
