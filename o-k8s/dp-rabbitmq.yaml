@@ -2,24 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rabbitmq-deployment
-  labels:
-    app: dp
-
 spec:
   replicas: 1
   selector:
     matchLabels:
-      type: rabbitmq-pod
-      app: dp
+      app: rabbitmq-deployment
   template:
     metadata:
-      name: dp-rabbitmq-pod
       labels:
-        type: rabbitmq-pod
-        app: dp
+        app: rabbitmq-deployment
     spec:
       containers:
-        - name: dp-rabbitmq
+        - name: rabbitmq-deployment
           image: rabbitmq
           env:
             - name: RABBITMQ_DEFAULT_USER
@@ -34,13 +28,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq-service
-  labels:
-    type: dp-rabbitmq-service
-    app: dp
 spec:
   ports:
     - port: 5672
       targetPort: 5672
   selector:
-    type: rabbitmq-pod
-    app: dp
+    type: rabbitmq-deployment

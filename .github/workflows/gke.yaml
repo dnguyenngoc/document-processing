@@ -2,7 +2,7 @@ name: DEPLOY_TO_GKE_PRODUCTION
 on:
   push:
     branches:
-      - main
+      - production
 
 env:
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }} # dockerhub pass
