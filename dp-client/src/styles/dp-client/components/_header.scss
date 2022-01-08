@@ -1,77 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
 
-
 .header{
-  padding: 0;
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  width: auto;
-  color: #727272;
-  // text-align: center;
-  background: #0f3858;
-  display: inline-flex;
-  padding-top: 2px;
-  padding-bottom: 73px;
-  height: 70px;
-  
-  .h-avatar {
-    margin-left: 3px;
-    margin-top: 4px;
-    padding: auto;
-    display: block;
-    width: 210px;
-    height: 60px;
-    background-color: rgb(25, 30, 59);
-    .h-a-text{
-      display: inline-block;
-      color: #e63415;
-      font-size: 40px;
-      letter-spacing: 3px;
-      cursor: pointer;
-      padding-left: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  height: 75px;
+  .header-avatar{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    width: auto;
+    // color: #727272;
+    background: #5283ad;
+    display: inline-flex;
+    padding-top: 2px;
+    padding-bottom: 73px;
+    height: 70px;
+    
+    .h-avatar {
+      margin-left: 3px;
+      margin-top: 6px;
+      padding: auto;
+      display: block;
+      width: 210px;
+      height: 55px;
+      background-color: rgb(25, 30, 59);
+      .h-a-text{
+        display: inline-block;
+        color: #e63415;
+        font-size: 40px;
+        letter-spacing: 3px;
+        cursor: pointer;
+        padding-left: 12px;
+      }
+      .h-a-text::before{
+        content: "APOT-G";
+        position: absolute;
+        color: transparent;
+        background-image: repeating-linear-gradient(
+          45deg,
+          transparent 0,
+          transparent 1px,
+          white 1px,
+          white 2px
+        );
+        background-clip: text;
+        top: 0px;
+        left: 0;
+        z-index: -1;
+        transition: 1s;
+      }
+      .h-a-text::after{
+        content: "APOT-G";
+        position: absolute;
+        color: transparent;
+        margin-left: 5px;
+        margin-top: 4px;
+        background-image: repeating-linear-gradient(
+          135deg,
+          transparent 0,
+          transparent 1px,
+          white 1px,
+          white 2px
+        );
+        background-clip: text;
+        top: 0px;
+        left: 7px;
+        transition: 1s;
+      }
+      .h-a-text:hover:before {
+        top: 2px;
+        left: 2px;
+      }  
+      .h-a-text:hover:after {
+        top: -1px;
+        left: 3px;
+      } 
     }
-    .h-a-text::before{
-      content: "APOT-G";
-      position: absolute;
-      color: transparent;
-      background-image: repeating-linear-gradient(
-        45deg,
-        transparent 0,
-        transparent 1px,
-        white 1px,
-        white 2px
-      );
-      background-clip: text;
-      top: 0px;
-      left: 0;
-      z-index: -1;
-      transition: 1s;
-    }
-    .h-a-text::after{
-      content: "APOT-G";
-      position: absolute;
-      color: transparent;
-      margin-left: 5px;
-      margin-top: 4px;
-      background-image: repeating-linear-gradient(
-        135deg,
-        transparent 0,
-        transparent 1px,
-        white 1px,
-        white 2px
-      );
-      background-clip: text;
-      top: 0px;
-      left: 7px;
-      transition: 1s;
-    }
-    .h-a-text:hover:before {
-      top: 2px;
-      left: 2px;
-    }  
-    .h-a-text:hover:after {
-      top: -1px;
-      left: 3px;
-    } 
   }
 }

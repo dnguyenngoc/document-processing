@@ -33,7 +33,11 @@ jobs:
       # [Step-3] buid and tag image from Dockerfile
       - name: Build docker image
         run: |
-          docker build -t $DP_API_IMAGE ./dp-api/
+          docker build -t $DP_API_IMAGE \
+          --build-arg DOMAIN=${{ secrets.DOMAIN }} \
+          --build-arg BE_PORT=${{ secrets.API_PORT }} \
+          --build-arg BE_HOST=${{ secrets.API_HOST }} \
+          --no-cache ./dp-api/
       
       # [Step-4] Push image to docker hub
       - name: Push image to DockerHub

@@ -1,55 +1,65 @@
 version: '3.8'
 
 services:
-  # dp-redis:
-  #   image: redis:latest
-  #   container_name: 'dp-redis'
-  #   restart: unless-stopped
-  #   hostname: redis
-  #   command: redis-server --requirepass 1q2w3e4r
-  #   ports: 
-  #     - 6379:6379
-  #   networks: 
-  #     - dp-net
-
-  # dp-rabbitmq:
-  #   image: rabbitmq:3-management-alpine
-  #   container_name: 'dp-rabbitmq'
-  #   restart: unless-stopped
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: "dp"
-  #     RABBITMQ_DEFAULT_PASS: "1q2w3e4r"
-  #     RABBITMQ_DEFAULT_VHOST: ""
-  #   ports:
-  #     - 5672:5672
-  #     - 15672:15672
-  #   networks: 
-  #     - dp-net
-
-  dp-client:
-    image: duynguyenngoc/dp-client:latest 
-    # command: bash "nginx"
-    ports:
-      - 80:80
-    networks:
+  dp-redis:
+    image: redis:latest
+    container_name: 'dp-redis'
+    restart: unless-stopped
+    hostname: redis
+    command: redis-server --requirepass 1q2w3e4r
+    ports: 
+      - 6379:6379
+    networks: 
       - dp-net
-  # dp-api:
+
+  dp-rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'dp-rabbitmq'
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "1q2w3e4r"
+      RABBITMQ_DEFAULT_VHOST: ""
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks: 
+      - dp-net
+
+  # dp-client:
   #   build:
-  #     context: ./dp-api
+  #     context: ./dp-client
   #     dockerfile: ./Dockerfile
-  #   container_name: dp-api
+  #     args:
+  #       DOMAIN: localhost
+  #       BE_HOST: dp-api
+  #       BE_PORT: 8081
   #   restart: unless-stopped
-  #   command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8081 --reload"
-  #   volumes:
-  #     - ./dp-api/app/:/app/
-  #     - dp-storage:/app/storages
   #   ports:
-  #    - 8081:8081
+  #     - 80:80
   #   depends_on:
   #     - dp-redis
   #     - dp-rabbitmq
   #   networks:
-  #    - dp-net
+  #     - dp-net
+
+  dp-api:
+    build:
+      context: ./dp-api
+      dockerfile: ./Dockerfile
+    container_name: dp-api
+    restart: unless-stopped
+    volumes:
+      - ./dp-api/app/:/app/
+      - dp-storage:/app/storages
+    ports:
+     - 8081:8081
+    command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8081 --reload"
+    depends_on:
+      - dp-redis
+      - dp-rabbitmq
+    networks:
+     - dp-net
 
   # field:
   #   build: 

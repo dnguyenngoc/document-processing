@@ -18,6 +18,10 @@ FROM nginx
 
 WORKDIR /usr/share/nginx/html
 
+ARG DOMAIN
+ARG BE_HOST
+ARG BE_PORT
+
 RUN rm -v /etc/nginx/nginx.conf
 RUN rm -v /etc/nginx/conf.d/default.conf
 COPY ./nginx.conf /etc/nginx/

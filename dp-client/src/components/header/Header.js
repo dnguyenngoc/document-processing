@@ -4,11 +4,13 @@ import React from 'react';
 const Header = () => {
     return(
     <div className='header'>
-        <div className='h-avatar'>
-            <span className='h-a-text'>APOT</span>
+       <div className='header-avatar'>
+            <div className='h-avatar'>
+                <span className='h-a-text'>APOT</span>
+            </div>
         </div>
-        <div>Menu</div>
     </div>
+  
     )
 }
 export default Header;

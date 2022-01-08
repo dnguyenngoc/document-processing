@@ -15,7 +15,7 @@ const FaceRecognitionDemo = () => {
 
     return(
         <>
-        {/* <Header /> */}
+        <Header />
         <div className='face-recognition-demo'>
             <h4 className='frd-title'>Semantic Face Retection Demo</h4>
             <div className='frd-image-select'>

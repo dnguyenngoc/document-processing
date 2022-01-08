@@ -27,8 +27,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rabbitmq-service
+  name: db-rabbitmq
 spec:
+  # type: NodePort
   ports:
     - port: 5672
       targetPort: 5672
