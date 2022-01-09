@@ -30,7 +30,6 @@ jobs:
       # [Step-3] buid and tag image from Dockerfile
       - name: Build docker image api
         run: |
-          echo ${{ secrets.API_ENV_FILE }}
           docker build -t $DP_API_IMAGE \
           --no-cache ./dp-api/
       # [Step-4] Push image to docker hub
