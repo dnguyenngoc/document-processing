@@ -5,7 +5,6 @@ services:
     image: redis:latest
     container_name: 'dp-redis'
     restart: unless-stopped
-    hostname: redis
     command: redis-server --requirepass 1q2w3e4r
     ports: 
       - 6379:6379
@@ -26,22 +25,21 @@ services:
     networks: 
       - dp-net
 
-  # dp-client:
-  #   build:
-  #     context: ./dp-client
-  #     dockerfile: ./Dockerfile
-  #     args:
-  #       DOMAIN: localhost
-  #       BE_HOST: dp-api
-  #       BE_PORT: 8081
-  #   restart: unless-stopped
-  #   ports:
-  #     - 80:80
-  #   depends_on:
-  #     - dp-redis
-  #     - dp-rabbitmq
-  #   networks:
-  #     - dp-net
+  dp-client:
+    build:
+      context: ./dp-client
+      dockerfile: ./Dockerfile
+      args:
+        DOMAIN: localhost
+        BE_HOST: dp-api
+        BE_PORT: 80
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      - dp-api
+    networks:
+      - dp-net
 
   dp-api:
     build:
@@ -54,39 +52,11 @@ services:
       - dp-storage:/app/storages
     ports:
      - 8081:8081
-    command: sh -c "uvicorn main:app --host 0.0.0.0 --port 8081 --reload"
     depends_on:
       - dp-redis
       - dp-rabbitmq
     networks:
      - dp-net
-
-  # field:
-  #   build: 
-  #     context: ./dp-field
-  #     dockerfile: ./Dockerfile
-  #   container_name: dp-field
-  #   restart: unless-stopped
-  #   command: sh -c "celery -A tasks worker --loglevel=info --concurrency=1 -E --logfile=logs/celery.log"
-  #   volumes:
-  #     - ./dp-field/app/:/app/
-  #     - dp-storage:/app/storages
-
-  #   networks:
-  #     - dp-net
-
-  # paragraph:
-  #   build: 
-  #     context: ./dp-paragraph
-  #     dockerfile: ./Dockerfile
-  #   container_name: dp-paragraph
-  #   restart: unless-stopped
-  #   command: sh -c "celery -A tasks worker --loglevel=info --concurrency=1 -E --logfile=logs/celery.log"
-  #   volumes:
-  #     - ./dp-paragraph/app/:/app/
-  #     - dp-storage:/app/storages
-  #   networks:
-  #     - dp-net
 
 networks:
   dp-net:

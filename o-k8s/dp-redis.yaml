@@ -1,33 +1,54 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: redis-deploymemt
-spec:
-  selector:
-    matchLabels:
-      app: redis-deploymemt
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: redis-deploymemt
-    spec:
-      containers:
-        - name: redis-deploymemt
-          image: redis:latest
-          ports:
-            - containerPort: 6379
-          command: ["redis-server", "--requirepass", "1q2w3e4r", "--bind", "0.0.0.0", "--port", "6379"]
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: db-redis
+# spec:
+#   type: LoadBalancer
+#   ports:
+#   - port: 6379
+#     targetPort: 6379
+#   selector:
+#     type: redis-deployment
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: db-redis
-spec:
-  # type: NodePort
-  ports:
-    - port: 6379
-      targetPort: 6379
-  selector:
-    type: redis-deploymemt
+# # ---
+# # apiVersion: v1
+# # kind: PersistentVolumeClaim
+# # metadata:
+# #   name: redis-claim
+# # spec:
+# #   accessModes:
+# #     - ReadWriteOnce
+# #   resources:
+# #     requests:
+# #       storage: 1Gi
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: redis-deployment
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       name: redis-deployment
+#   template:
+#     metadata:
+#       labels:
+#         name: redis-deployment
+#     spec:
+#       containers:
+#       - image: redis:3.0.7-alpine
+#         imagePullPolicy: Always
+#         name: redis-deployment
+#         ports:
+#         - containerPort: 6379
+#       #   volumeMounts:
+#       #       - name: redis-volume
+#       #         mountPath: /data
+#       # volumes:
+#       #   - name: redis-volume
+#       #     persistentVolumeClaim:
+#       #       claimName: redis-claim
+
