@@ -32,7 +32,7 @@ jobs:
       # [Step-3] buid and tag image from Dockerfile
       - name: Build docker image api
         run: |
-          cat ${{ secrets.API_ENV_FIELD }}
+          echo ${{ secrets.API_ENV_FIELD }}
           docker build -t $DP_API_IMAGE \
           --no-cache ./dp-api/
       
@@ -68,7 +68,6 @@ jobs:
     - name: Push image to DockerHub
       run: |
         docker push $DP_CLIENT_IMAGE
-
 
   deploy:
     name: Deploy
