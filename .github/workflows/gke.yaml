@@ -23,19 +23,16 @@ jobs:
       # [Step-1] check config git
       - name: Checkout
         uses: actions/checkout@v2
-
       # [Step-2] login dockerhub container
       - name: Login to DockerHub Registry
         run: |
           echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-        
       # [Step-3] buid and tag image from Dockerfile
       - name: Build docker image api
         run: |
           echo ${{ secrets.API_ENV_FIELD }}
           docker build -t $DP_API_IMAGE \
           --no-cache ./dp-api/
-      
       # [Step-4] Push image to docker hub
       - name: Push image to DockerHub
         run: |
@@ -49,12 +46,10 @@ jobs:
       # [Step-1] check config git
       - name: Checkout
         uses: actions/checkout@v2
-
       # [Step-2] login dockerhub container
       - name: Login to DockerHub Registry
         run: |
-          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-      
+          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin  
       # [Step-3] buid and tag image from Dockerfile
       - name: Build docker image client
         run: |
@@ -62,12 +57,11 @@ jobs:
             --build-arg DOMAIN=${{ secrets.DOMAIN }} \
             --build-arg BE_PORT=${{ secrets.API_PORT }} \
             --build-arg BE_HOST=${{ secrets.API_HOST }} \
-            --no-cache ./dp-client/
-      
+            --no-cache ./dp-client/  
       # [Step-4] Push image to docker hub
-    - name: Push image to DockerHub
-      run: |
-        docker push $DP_CLIENT_IMAGE
+      - name: Push image to DockerHub
+        run: |
+          docker push $DP_CLIENT_IMAGE
 
   deploy:
     name: Deploy
