@@ -2,7 +2,7 @@ name: DEPLOY_TO_GKE_PRODUCTION
 on:
   push:
     branches:
-      - production
+      - master
 
 env:
   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }} # dockerhub pass
@@ -12,16 +12,17 @@ env:
   GKE_ZONE: asia-south1-a  # Add your cluster zone here.
   DEPLOYMENT_NAME: gke-production # development name
   DP_API_IMAGE: duynguyenngoc/dp-api:latest # Image docker
+  DP_CLIENT_IMAGE: duynguyenngoc/dp-client:latest # Image docker
+
 
 
 jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy DP-API
+  build:
+    name: Build, Publish
     runs-on: ubuntu-latest
     environment: production
-
     steps:
-      # [Step-1] check config git
+     # [Step-1] check config git
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -33,26 +34,41 @@ jobs:
       # [Step-3] buid and tag image from Dockerfile
       - name: Build docker image api
         run: |
+          echo ${{ secrets.API_ENV_FIEL }}
           docker build -t $DP_API_IMAGE \
-          --build-arg DOMAIN=${{ secrets.DOMAIN }} \
-          --build-arg BE_PORT=${{ secrets.API_PORT }} \
-          --build-arg BE_HOST=${{ secrets.API_HOST }} \
           --no-cache ./dp-api/
 
-      # # [Step-3] buid and tag image from Dockerfile
-      # - name: Build docker image api
-      #   run: |
-      #     docker build -t $DP_API_IMAGE \
-      #     --build-arg DOMAIN=${{ secrets.DOMAIN }} \
-      #     --build-arg BE_PORT=${{ secrets.API_PORT }} \
-      #     --build-arg BE_HOST=${{ secrets.API_HOST }} \
-      #     --no-cache ./dp-api/
+      # [Step-3] buid and tag image from Dockerfile
+      - name: Build docker image client
+        run: |
+          docker build -t $DP_CLIENT_IMAGE \
+            --build-arg DOMAIN=${{ secrets.DOMAIN }} \
+            --build-arg BE_PORT=${{ secrets.API_PORT }} \
+            --build-arg BE_HOST=${{ secrets.API_HOST }} \
+            --no-cache ./dp-client/
       
       # [Step-4] Push image to docker hub
       - name: Push image to DockerHub
         run: |
           docker push $DP_API_IMAGE
+          docker push $DP_CLIENT_IMAGE
 
+  deploy:
+    name: Deploy DP
+    runs-on: ubuntu-latest
+    environment: production
+    needs: build
+
+    steps:
+      # [Step-1] check config git
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # [Step-2] login dockerhub container
+      - name: Login to DockerHub Registry
+        run: |
+          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+        
       # [Step-5] Setup gcloud CLI
       - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
         with:
