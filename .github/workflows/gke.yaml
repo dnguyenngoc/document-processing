@@ -27,15 +27,15 @@ jobs:
       - name: Login to DockerHub Registry
         run: |
           echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-      # [Step-3] buid and tag image from Dockerfile
-      - name: Build docker image api
-        run: |
-          docker build -t $DP_API_IMAGE \
-          --no-cache ./dp-api/
-      # [Step-4] Push image to docker hub
-      - name: Push image to DockerHub
-        run: |
-          docker push $DP_API_IMAGE
+      # # [Step-3] buid and tag image from Dockerfile
+      # - name: Build docker image api
+      #   run: |
+      #     docker build -t $DP_API_IMAGE \
+      #     --no-cache ./dp-api/
+      # # [Step-4] Push image to docker hub
+      # - name: Push image to DockerHub
+      #   run: |
+      #     docker push $DP_API_IMAGE
 
   build-client:
     name: Build, Publish client
@@ -49,18 +49,18 @@ jobs:
       - name: Login to DockerHub Registry
         run: |
           echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin  
-      # [Step-3] buid and tag image from Dockerfile
-      - name: Build docker image client
-        run: |
-          docker build -t $DP_CLIENT_IMAGE \
-            --build-arg DOMAIN=${{ secrets.DOMAIN }} \
-            --build-arg BE_PORT=${{ secrets.API_PORT }} \
-            --build-arg BE_HOST=${{ secrets.API_HOST }} \
-            --no-cache ./dp-client/  
-      # [Step-4] Push image to docker hub
-      - name: Push image to DockerHub
-        run: |
-          docker push $DP_CLIENT_IMAGE
+      # # [Step-3] buid and tag image from Dockerfile
+      # - name: Build docker image client
+      #   run: |
+      #     docker build -t $DP_CLIENT_IMAGE \
+      #       --build-arg DOMAIN=${{ secrets.DOMAIN }} \
+      #       --build-arg BE_PORT=${{ secrets.API_PORT }} \
+      #       --build-arg BE_HOST=${{ secrets.API_HOST }} \
+      #       --no-cache ./dp-client/  
+      # # [Step-4] Push image to docker hub
+      # - name: Push image to DockerHub
+      #   run: |
+      #     docker push $DP_CLIENT_IMAGE
 
   deploy:
     name: Deploy
@@ -99,8 +99,7 @@ jobs:
       - name: Deploy
         run: |-
           kubectl apply -f ./o-k8s/
-          kubectl rollout status deployment/dp-client
-          kubectl rollout status deployment/dp-api
-          kubectl get deployments -o wide
+          kubectl rollout status deployment/api-deployment
+          kubectl rollout status deployment/nginx-deployment
           kubectl get services -o wide
     
